@@ -48,7 +48,22 @@ app.controller('controlAlta', function($scope, $http) {
 
 app.controller('controlGrilla', function($scope, $http) {
   	$scope.DatoTest="**grilla**";
- 	
+ 	  console.log("estoy en la grilla");
+   
+
+    $http.get('http://www.mocky.io/v2/57c8ab92120000e413e76a8c')
+    .then(function(respuesta) {
+
+      // correcto
+      console.info("volvio:",respuesta.data);
+      $scope.ListadoPersonas=respuesta.data;
+
+    },function(error){
+      //incorrecto
+      console.info("error:",error);
+       $scope.ListadoPersonas=[];
+
+    });
  /*	$http.get('PHP/nexo.php', { params: {accion :"traer"}})
  	.then(function(respuesta) {     	
 
